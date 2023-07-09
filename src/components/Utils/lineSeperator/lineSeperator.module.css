@@ -1,0 +1,7 @@
+.lineSeperator {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: var(--background-major);
+  margin-bottom: var(--space-extra-1);
+}

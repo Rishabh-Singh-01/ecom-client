@@ -1,0 +1,60 @@
+.savedProductCard {
+  display: flex;
+  gap: var(--space-normal);
+  line-height: 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: var(--space-normal);
+}
+
+.savedProductCardImageWrapper {
+  width: 30%;
+}
+.savedProductCardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.savedProductCardDetails {
+  font-size: var(--font-size-small-1);
+  padding: var(--space-extra-1) var(--space-extra-1) var(--space-extra-1) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  flex: 1;
+}
+.savedProductCardPrice {
+  font-weight: 600;
+  font-size: var(--font-size-small-1);
+  color: var(--background-extra-primary);
+}
+
+.savedProductCardActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-extra-1);
+  /* flex: 1; */
+}
+.savedProductCardChangeQuantityWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-extra-2);
+}
+/* .savedProductCardChangeQuantityWrapper > .savedProductCardChangeQuantityIcon {
+  font-size: inherit;
+  padding: 0.3rem;
+  font-variation-settings: 'wght' 500;
+  border: 2px solid var(--background-main-primary-transparent);
+  border-radius: 0.8rem;
+}
+.savedProductCardActions > .savedProductCardDeleteIcon {
+  font-size: inherit;
+  font-variation-settings: 'wght' 400;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: var(--background-main-primary-transparent);
+} */

@@ -1,0 +1,214 @@
+.singleProduct {
+  padding: 0 var(--space-normal);
+}
+
+/* .singleProductMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+   gap: var(--space-medium-2);
+} */
+
+.singleProductMain > div {
+  margin-bottom: var(--space-normal);
+}
+
+.productImage {
+  background-color: var(--extraColor-lightGrey);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImage {
+  width: 90%;
+  height: auto;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.productDetails > div {
+  margin-bottom: var(--space-medium-1);
+}
+
+.productDetails > div:last-child,
+.singleProductMain > div:last-child {
+  margin-bottom: 0;
+}
+
+.productInfoPrice {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-extra-1);
+  gap: 0.5rem;
+}
+
+.productInfoTitle {
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.productInfoPriceMrp,
+.productInfoPreviousPrice {
+  font-size: var(--font-size-small-1);
+  opacity: 0.8;
+}
+
+.productInfoPreviousPrice {
+  text-decoration: line-through;
+}
+
+.productInfoCurrentPrice {
+  font-weight: 700;
+}
+
+.productInfoTotalOff {
+  background-color: var(--background-main-primary);
+  color: var(--background-extra-primary);
+  padding: 0.2rem 1rem;
+  font-weight: 500;
+  margin-left: var(--space-extra-1);
+}
+
+.productSizeContainer {
+  font-size: var(--font-size-small-1);
+}
+
+.productSizeHeading,
+.productDescSubHeading {
+  margin-bottom: var(--space-extra-1);
+}
+
+.productSizeHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-extra-1);
+}
+
+.productAllSizesAvailable {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.productSizeName {
+  padding: var(--space-extra-1) var(--space-small-1);
+  border: 2px solid var(--background-main-primary);
+  border-radius: var(--space-largest);
+  text-transform: uppercase;
+}
+
+.productSizeChart {
+  color: var(--background-extra-primary);
+  font-weight: 500;
+}
+
+.productDescContainer,
+.productExtraServicesContainer {
+  font-size: var(--font-size-extra-1);
+}
+
+.productDescSubHeading {
+  display: inline-block;
+}
+
+.productDescContainer > div {
+  margin-bottom: var(--space-extra-1);
+}
+
+.productDescContainer > div:last-child {
+  margin-bottom: 0;
+}
+
+.productDescDetails,
+.productDescFabrics,
+.productDescSizeFit {
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  gap: var(--space-extra-1);
+}
+
+.productDescDetails > span,
+.productDescFabrics > span,
+.productDescSizeFit > span {
+  font-weight: 300;
+  flex: 2;
+}
+
+.productDescDetailsThemePara,
+.productDescFabricList,
+.productDescSizeFitList {
+  flex: 7;
+  text-align: left;
+}
+.productDescFabricList,
+.productDescSizeFitList,
+.productExtraServiceList {
+  list-style: none;
+}
+
+.productExtraServiceListItem {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: var(--space-normal);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.productExtraServiceListItem:last-child {
+  margin-bottom: 0;
+}
+
+.productExtraServiceListItem > span {
+  color: var(--background-main-secondary);
+  font-size: var(--font-size-medium-2);
+}
+
+.ctaButtons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: var(--space-normal);
+  padding: var(--space-small-1);
+  background-color: var(--background-main-primary);
+  z-index: 999;
+}
+
+.ctaButtons > button {
+  flex: 1;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  gap: var(--space-extra-1);
+  padding: var(--space-extra-1);
+  border-radius: var(--space-extra-1);
+  background-color: var(--background-major);
+  color: var(--background-extra-primary);
+  font-weight: 700;
+  font-size: var(--font-size-extra-1);
+  letter-spacing: 1px;
+}
+
+.ctaButtons .ctaBtnAddToCart {
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  background-color: var(--background-extra-primary);
+  color: var(--background-major);
+}

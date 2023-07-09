@@ -1,0 +1,36 @@
+.cart {
+  width: 100%;
+  height: 100%;
+  content: '';
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.skeletonImage {
+  content: '';
+  width: 100%;
+  height: 18rem;
+}
+
+.content {
+  padding: var(--space-small-2);
+}
+
+.skeletonText {
+  content: '';
+  width: 100%;
+  height: var(--font-size-small-3);
+  border-radius: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.skeletonTextLast {
+  width: 70%;
+  margin-bottom: 0;
+}
+
+.skeletonTextSmall {
+  margin-bottom: 0;
+  margin-top: var(--space-normal);
+  width: 50%;
+}

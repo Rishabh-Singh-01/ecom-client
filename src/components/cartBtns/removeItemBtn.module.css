@@ -1,0 +1,8 @@
+.savedProductCardChangeQuantityIcon {
+  font-size: inherit;
+  padding: 0.3rem;
+  font-variation-settings: 'wght' 500;
+  border: 2px solid var(--background-main-primary-transparent);
+  border-radius: 0.8rem;
+  background-color: var(--background-major);
+}

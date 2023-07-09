@@ -1,0 +1,7 @@
+.middle {
+  margin-top: 10rem;
+}
+
+.productInfoContainer {
+  padding: 0 var(--space-normal);
+}

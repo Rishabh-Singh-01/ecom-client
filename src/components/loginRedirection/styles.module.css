@@ -1,0 +1,35 @@
+.loginRedirection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: var(--font-size-normal);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loginRedirectionFig {
+  font-size: var(--font-size-medium-4);
+  margin-bottom: var(--space-medium-3);
+}
+.loginRedirectionMsg {
+  text-align: center;
+  margin-bottom: var(--space-normal);
+  font-weight: 500;
+}
+
+.loginRedirectionBtn {
+  padding: var(--space-small-1) var(--space-medium-2);
+  border-radius: var(--space-extra-1);
+  background-color: var(--background-main-secondary);
+  color: var(--background-major);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-small-1);
+}

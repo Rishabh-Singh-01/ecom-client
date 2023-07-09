@@ -1,0 +1,90 @@
+.checkoutSummary {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--space-medium-1) var(--space-normal);
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  background-color: var(--background-main-primary);
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px 20px;
+  z-index: 9;
+}
+
+.checkoutSummaryDeliveryAddress,
+.checkoutSummaryOrderInfoWrapper {
+  margin-bottom: var(--space-medium-1);
+}
+
+.checkoutSummaryHeading {
+  font-size: var(--font-size-medium-1);
+  margin-bottom: var(--space-small-1);
+}
+
+.checkoutSummaryDeliveryAddressDetails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex: 1;
+}
+
+.checkoutSummaryLocationIcon,
+.checkoutSummaryForwardIcon {
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--background-major);
+  background-color: var(--background-major);
+  font-variation-settings: 'wght' 400;
+}
+
+.checkoutSummaryLocationIcon {
+  background-color: var(--background-secondary);
+}
+
+.checkoutSummaryDeliveryAddressTextHeading {
+  font-size: var(--font-size-small-1);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.checkoutSummaryDeliveryAddressLocator {
+  font-size: var(--font-size-small-2);
+}
+
+.checkoutSummaryOrderInfo {
+  font-size: var(--font-size-small-1);
+}
+.checkoutSummaryOrderInfoDetail {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-extra-1);
+}
+.checkoutSummaryOrderInfoDetailValue {
+  letter-spacing: 0.5px;
+}
+.checkoutSummaryFinalPrice {
+  font-size: var(--font-size-normal);
+  color: var(--background-extra-primary);
+  font-weight: 600;
+}
+.checkoutSummaryOrderInfo > div:last-child {
+  margin-bottom: 0;
+}
+.checkoutSummaryCTABtn {
+  font-size: var(--font-size-extra-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-small-1) 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: var(--space-small-2);
+  color: var(--background-main-secondary);
+  background-color: var(--background-major);
+}

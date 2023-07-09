@@ -1,0 +1,10 @@
+.shoppingCartPage {
+  padding: 0 var(--space-normal);
+  /* just a workaround to get  saved oriduct card box shadow work*/
+  padding-bottom: var(--space-normal);
+}
+
+/* For unauthorized users */
+.unauthLoginRedirectionContainer {
+  padding: 0 var(--space-normal);
+}

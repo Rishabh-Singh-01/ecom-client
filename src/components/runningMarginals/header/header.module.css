@@ -1,0 +1,40 @@
+.header {
+  background-color: var(--background-main-primary);
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-extra-2);
+  border-bottom: var(--text-primary-color) solid 1px;
+}
+
+/* if backdrop support: transparent and blurred else opaque as fallback*/
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .header {
+    background-color: var(--background-main-primary-transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.headerLeft {
+  text-align: left;
+  flex: 1;
+}
+.headerMiddle {
+  text-align: center;
+  flex: 1;
+}
+.headerRight {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: var(--space-medium-1);
+  flex: 4;
+}
+.headerEquals > span {
+  font-variation-settings: 'wght' 400;
+}

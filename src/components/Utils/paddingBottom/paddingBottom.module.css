@@ -1,0 +1,10 @@
+.paddingBottomRoutePages {
+  width: 100%;
+  content: '';
+  padding-bottom: var(--space-largest);
+  height: auto;
+}
+
+.paddingBottomSmallRoutePages {
+  padding-bottom: 8.2rem;
+}
