@@ -98,13 +98,6 @@
   gap: 0.5rem;
 }
 
-.productSizeName {
-  padding: var(--space-extra-1) var(--space-small-1);
-  border: 2px solid var(--background-main-primary);
-  border-radius: var(--space-largest);
-  text-transform: uppercase;
-}
-
 .productSizeChart {
   color: var(--background-extra-primary);
   font-weight: 500;
@@ -172,7 +165,6 @@
   color: var(--background-main-secondary);
   font-size: var(--font-size-medium-2);
 }
-
 .ctaButtons {
   position: fixed;
   bottom: 0;
@@ -183,32 +175,4 @@
   padding: var(--space-small-1);
   background-color: var(--background-main-primary);
   z-index: 999;
-}
-
-.ctaButtons > button {
-  flex: 1;
-  background: none;
-  font: inherit;
-  color: inherit;
-  outline: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  gap: var(--space-extra-1);
-  padding: var(--space-extra-1);
-  border-radius: var(--space-extra-1);
-  background-color: var(--background-major);
-  color: var(--background-extra-primary);
-  font-weight: 700;
-  font-size: var(--font-size-extra-1);
-  letter-spacing: 1px;
-}
-
-.ctaButtons .ctaBtnAddToCart {
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  background-color: var(--background-extra-primary);
-  color: var(--background-major);
 }

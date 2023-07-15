@@ -14,7 +14,9 @@ export function Header() {
         </Link>
       </div>
       <div className={`${styles.headerEquals} ${styles.headerRight}`}>
-        <span className='material-symbols-outlined'>search</span>
+        <Link href='/search'>
+          <span className='material-symbols-outlined'>search</span>
+        </Link>
         <Link href='/products'>
           <span className='material-symbols-outlined'>favorite</span>
         </Link>

@@ -4,6 +4,12 @@ import { PaddingBottomRoutePages } from '@/components/Utils/paddingBottom';
 import { populateSingleProduct } from '@/common/populateData/singleProduct';
 import Image from 'next/image';
 import DraggableCarousel from '@/components/draggableCarousel';
+import {
+  AddToCartBtn,
+  ProductSizeBtns,
+  WishlistBtn,
+} from '@/components/productPage';
+import { AddItemBtn } from '@/components/cartBtns';
 
 // :TODO(p) -- change the heroImg and make the dynamic images using aws s3 & also set the image to optimal sizes for their best usecases
 // :TODO(p) -- refactor this code into their particular componeents
@@ -37,6 +43,7 @@ function calculateTotalOff(prevPrice: number, currPrice: number) {
 
 export default async function Product({ params }: { params: { id: string } }) {
   const { data } = await populateSingleProduct(params.id);
+
   return (
     <div className={styles.singleProduct}>
       <PaddingBottomRoutePages backgroundColor={'inherit'} />
@@ -109,11 +116,9 @@ export default async function Product({ params }: { params: { id: string } }) {
               <span className={styles.productSizeChart}>Size Chart</span>
             </div>
             <div className={styles.productAllSizesAvailable}>
-              <span className={styles.productSizeName}>S</span>
-              <span className={styles.productSizeName}>M</span>
-              <span className={styles.productSizeName}>L</span>
-              <span className={styles.productSizeName}>XL</span>
-              <span className={styles.productSizeName}>XLL</span>
+              {data.map((prd) => (
+                <ProductSizeBtns size={prd.size_name} />
+              ))}
             </div>
           </div>
           <div className={styles.productDescContainer}>
@@ -184,14 +189,8 @@ export default async function Product({ params }: { params: { id: string } }) {
       </article>
       <PaddingBottomRoutePages backgroundColor={'inherit'} />
       <div className={styles.ctaButtons}>
-        <button className={styles.ctaBtnWishlist}>
-          <span className='material-symbols-outlined'>favorite</span>
-          Wishlist
-        </button>
-        <button className={styles.ctaBtnAddToCart}>
-          <span className='material-symbols-outlined'>shopping_bag</span>
-          Add to Cart
-        </button>
+        <WishlistBtn />
+        <AddToCartBtn productId={params.id} />
       </div>
     </div>
   );

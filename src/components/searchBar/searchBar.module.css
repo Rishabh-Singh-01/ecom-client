@@ -1,0 +1,20 @@
+.searchForm {
+  width: auto;
+  text-align: center;
+  background-color: var(--background-major);
+}
+
+.searchInput {
+  font-family: inherit;
+  width: 100%;
+  padding: 1rem;
+  font-size: var(--font-size-extra-1);
+  outline: none;
+  border: 0.5rem solid var(--extraColor-lightGrey);
+  border-radius: 1rem;
+  font-weight: 500;
+}
+
+.searchInput::placeholder {
+  font-weight: 400;
+}

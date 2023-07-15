@@ -1,0 +1,11 @@
+.productSizeName {
+  padding: var(--space-extra-1) var(--space-small-1);
+  border: 2px solid var(--background-main-primary);
+  border-radius: var(--space-largest);
+  text-transform: uppercase;
+}
+
+.selectedSizeName {
+  background-color: var(--background-main-secondary);
+  color: var(--background-major);
+}

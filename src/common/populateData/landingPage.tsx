@@ -4,7 +4,7 @@ import { AllProductsSmallInterface } from '../models/productInterfaces';
 export async function populateBestDeals() {
   // :TODO(p) -- put the main api call for best deals
   const { data, status }: AllProductsSmallInterface = await fetch(
-    'http://localhost:8080/api/v1/products',
+    `${process.env.SERVER_SIDE_URL}/api/v1/products`,
     {
       credentials: 'include',
       // TODO(l) :  Change the caching and make sure the cookies arenot send due to cache even after they disappear;

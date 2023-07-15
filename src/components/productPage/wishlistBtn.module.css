@@ -1,0 +1,22 @@
+.ctaBtnWishlist {
+  /* same as add to cart btn and tightyl coupled with cta btns */
+  flex: 1;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  gap: var(--space-extra-1);
+  padding: var(--space-extra-1);
+  border-radius: var(--space-extra-1);
+  font-size: var(--font-size-extra-1);
+  /* end */
+  letter-spacing: 1px;
+  font-weight: 700;
+  background-color: var(--background-major);
+  color: var(--background-extra-primary);
+}
