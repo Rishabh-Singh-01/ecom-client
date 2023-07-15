@@ -16,11 +16,14 @@ export function SearchBar() {
     <form className={styles.searchForm} onSubmit={onSubmitSearchFormHandler}>
       <input
         className={styles.searchInput}
-        placeholder='Search for your favourite character ...'
+        placeholder='Search your favourite character ...'
         value={searchText}
         onInput={(e) => setSearchText((e.target as HTMLInputElement).value)}
         autoFocus
       />
+      <button className={styles.searchFormSubmitButton} type='submit'>
+        <span className='material-symbols-outlined'>search</span>
+      </button>
     </form>
   );
 }

@@ -5,57 +5,41 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ProductInfoCartList } from '@/components/productInfoCartList';
 import { PaddingBottomRoutePages } from '@/components/Utils/paddingBottom';
-import { populateBestDeals } from '@/common/populateData/landingPage';
-
-const getAnimeVerseFakeAPI = [
-  {
-    verseName: 'Trendy',
-    imageLink: '',
-  },
-  {
-    verseName: 'Classic',
-    imageLink: '',
-  },
-  {
-    verseName: 'Rare',
-    imageLink: '',
-  },
-  {
-    verseName: 'Legacy',
-    imageLink: '',
-  },
-  {
-    verseName: 'Outsiders',
-    imageLink: '',
-  },
-  {
-    verseName: 'NSFW',
-    imageLink: '',
-  },
-];
+import {
+  populateAllThemes,
+  populateBestDeals,
+} from '@/common/populateData/landingPage';
 
 export default async function Home() {
-  console.log('this is good studd');
-  const listItems: JSX.Element[] = getAnimeVerseFakeAPI.map(
-    ({ verseName }, i: number): JSX.Element => {
+  const populateBestDealsPromise = populateBestDeals();
+  const populateAllThemesPromise = populateAllThemes();
+
+  const [{ data }, { data: themeData }] = await Promise.all([
+    populateBestDealsPromise,
+    populateAllThemesPromise,
+  ]);
+
+  const listItems: JSX.Element[] = themeData.map(
+    ({ title }, i: number): JSX.Element => {
       return (
-        <li key={i}>
-          <figure className={styles.verseFigure}>
-            <Image
-              src={mush}
-              alt='Image for figure'
-              priority
-              className={styles.verseFigureImage}
-            />
-            <figcaption className={styles.verseFigureCaption}>
-              {verseName}
-            </figcaption>
-          </figure>
+        <li key={`AllThemes-${title}-${i + 1}`}>
+          <Link href={`/products?theme=${title}`}>
+            <figure className={styles.verseFigure}>
+              <Image
+                src={mush}
+                alt='Image for figure'
+                priority
+                className={styles.verseFigureImage}
+              />
+              <figcaption className={styles.verseFigureCaption}>
+                {title}
+              </figcaption>
+            </figure>
+          </Link>
         </li>
       );
     }
   );
-  const { data } = await populateBestDeals();
   return (
     <>
       <main className={styles.landingPage}>
@@ -105,7 +89,7 @@ export default async function Home() {
 
         <section className={styles.bestDeals}>
           <h2 className='headingSecondary'>{`Today's Best Deals For You`}</h2>
-            <ProductInfoCartList data={data} />
+          <ProductInfoCartList data={data} />
         </section>
 
         <section>
