@@ -1,15 +1,41 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 import styles from './addToCartBtn.module.css';
-import { useProductContext } from '@/common/context/productStore';
+import { getProductSizeSelectedLocalStore } from '@/common/context/localStore';
+import { useDidMountEffect } from '@/common/utils/useDidMountEffect';
 
-export function AddToCartBtn({ productId }: { productId: string }) {
-  // @ts-ignore: :TODO(l) -- find the fix for ts error
-  const { productSize }: { productSize: string } = useProductContext();
+function getAddToCartBtnStatus(
+  productSize: string,
+  sizesAddedInCart: string[]
+) {
+  for (const size of sizesAddedInCart) {
+    if (size === productSize) return 'goToCart';
+  }
+  return 'addToCart';
+}
+
+export function AddToCartBtn({
+  productId,
+  sizesAddedInCart,
+}: {
+  productId: string;
+  sizesAddedInCart: string[];
+}) {
   const router = useRouter();
+  const productSize = getProductSizeSelectedLocalStore(productId);
 
+  const btnState = getAddToCartBtnStatus(productSize, sizesAddedInCart);
+  const [addToCartBtnState, setAddToCartBtnState] = useState(btnState);
+
+  useDidMountEffect(() => {
+    setAddToCartBtnState(btnState);
+  }, [btnState]);
+
+  // if add to cart functionality is called
   const onClickAddProductToCartHandler = async () => {
     try {
       const res = await axios.post(
@@ -26,6 +52,9 @@ export function AddToCartBtn({ productId }: { productId: string }) {
           },
         }
       );
+
+      if (res.status === 201) setAddToCartBtnState('goToCart');
+      else throw new Error('Something went wrong');
     } catch (err: any) {
       // TODO:(p) -- If a person adds to the cart and then login it really makes no sense as the product will not be added to the cart -- could use local storage?
       console.log(err);
@@ -36,6 +65,17 @@ export function AddToCartBtn({ productId }: { productId: string }) {
     }
   };
 
+  // if item already added to the cart
+  if (addToCartBtnState === 'goToCart') {
+    return (
+      <Link href='/cart' className={styles.ctaBtnAddToCart}>
+        <span className='material-symbols-outlined'>shopping_bag</span>
+        Go to Cart
+      </Link>
+    );
+  }
+
+  // if item is not added to the cart
   return (
     <button
       className={styles.ctaBtnAddToCart}

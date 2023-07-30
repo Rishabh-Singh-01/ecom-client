@@ -8,24 +8,8 @@ import {
 } from '@/common/models/cartIntefaces';
 import { CartSummary } from '@/components/cartSummary';
 import LoginRedirection from '@/components/loginRedirection';
-
-async function getData() {
-  const res = await fetch(`${process.env.SERVER_SIDE_URL}/api/v1/cart`, {
-    // TODO(l) :  Change the caching and make sure the cookies arenot send due to cache even after they disappear and page should be rendered when clicked;
-    cache: 'no-cache',
-    headers: {
-      Cookie: cookies().toString(),
-    },
-  });
-  console.log(res);
-  if (res.status === 200) return res.json();
-  if (res.status === 401)
-    return {
-      status: 'unauthorized',
-      message: 'Please login first!',
-    };
-  throw new Error('Something went wrong' + res.statusText);
-}
+import { populateCartItemsData } from '@/common/populateData/cartItems';
+import isValidCartItemsData from '@/common/utils/cartItemDataTypeGuard';
 
 function getTotalSelectedProductPrice(data: [ProductFromCartInterface]) {
   return data.reduce(
@@ -38,13 +22,13 @@ export default async function Cart() {
   // TODO(p) : Think about the architecture if we want to fetch data every time or persist using context/redux;
   // fetching user info
   // const user = await getUser();
-  const cartData: AllProductsFromCartInterface = await getData();
-  console.log(cartData);
-  if (cartData.status === 'unauthorized') {
-    return <LoginRedirection />;
-  }
+  const cartItemsData = await populateCartItemsData();
+  console.log(cartItemsData);
 
-  const { data } = cartData.data;
+  // :TODO(l) -- make seperate case for unauth and internal server errors instead of all to login page
+  if (!isValidCartItemsData(cartItemsData)) return <LoginRedirection />;
+
+  const { data } = cartItemsData;
   const productPrice = getTotalSelectedProductPrice(data);
   console.log(getTotalSelectedProductPrice(data));
   return (
@@ -53,7 +37,7 @@ export default async function Cart() {
         <PaddingBottomRoutePages backgroundColor={'inherit'} />
         <h2 className='headingSecondary'>Order Details</h2>
         {data.map((product, i: number) => (
-          // :TODO(p) -- Think about the incorpotation of size on the carts
+          // :TODO(done) -- Think about the incorpotation of size on the carts
           <SavedProductCard key={i} product={product} />
         ))}
       </section>

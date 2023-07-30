@@ -25,7 +25,12 @@
   justify-content: space-between;
   flex: 1;
 }
+.savedProductCardPriceSizeContainer {
+  display: flex;
+  justify-content: space-between;
+}
 .savedProductCardPrice {
+  display: inline-block;
   font-weight: 600;
   font-size: var(--font-size-small-1);
   color: var(--background-extra-primary);

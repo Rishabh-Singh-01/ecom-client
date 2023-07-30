@@ -9,40 +9,76 @@ import {
   ProductSizeBtns,
   WishlistBtn,
 } from '@/components/productPage';
-import { AddItemBtn } from '@/components/cartBtns';
+import { populateCartItemsData } from '@/common/populateData/cartItems';
+import { ProductFromCartInterface } from '@/common/models/cartIntefaces';
+import isValidCartItemsData from '@/common/utils/cartItemDataTypeGuard';
 
 // :TODO(p) -- change the heroImg and make the dynamic images using aws s3 & also set the image to optimal sizes for their best usecases
 // :TODO(p) -- refactor this code into their particular componeents
 
-function getFixedExtraServicesObj() {
-  const extraServicesObj = [
-    {
-      icon: 'local_shipping',
-      serviceStatement: 'Free shipping',
-    },
-    {
-      icon: 'workspace_premium',
-      serviceStatement: 'Quality Checked',
-    },
-    {
-      icon: 'payments',
-      serviceStatement: 'Pay on Delivery available',
-    },
-    {
-      icon: 'currency_exchange',
-      serviceStatement: 'Moneyback Gaurantee Return',
-    },
-  ];
-  return extraServicesObj;
-}
+// function getFixedExtraServicesObj() {
+//   const extraServicesObj = [
+//     {
+//       icon: 'local_shipping',
+//       serviceStatement: 'Free shipping',
+//     },
+//     {
+//       icon: 'workspace_premium',
+//       serviceStatement: 'Quality Checked',
+//     },
+//     {
+//       icon: 'payments',
+//       serviceStatement: 'Pay on Delivery available',
+//     },
+//     {
+//       icon: 'currency_exchange',
+//       serviceStatement: 'Moneyback Gaurantee Return',
+//     },
+//   ];
+//   return extraServicesObj;
+// }
 
 function calculateTotalOff(prevPrice: number, currPrice: number) {
   const relativeChange = (prevPrice - currPrice) / prevPrice;
   return (relativeChange * 100).toFixed(0);
 }
 
+// params: productId and cartItemsData
+// returns : array of sizes name or empty array in case of unauth/error
+function getCurrentSizeAddedInCartFromProduct(
+  productId: string,
+  cartItemsData:
+    | {
+        data: [ProductFromCartInterface];
+      }
+    | {
+        status: string;
+        message: string;
+      }
+) {
+  const addedSizes: string[] = [];
+  if (isValidCartItemsData(cartItemsData)) {
+    for (const item of cartItemsData.data) {
+      if (item.product_id === productId) addedSizes.push(item.size_name);
+    }
+  }
+  return addedSizes;
+}
+
 export default async function Product({ params }: { params: { id: string } }) {
-  const { data } = await populateSingleProduct(params.id);
+  // const { data } = await populateSingleProduct(params.id);
+
+  // fetching all the necessary details in one go
+  const [{ data }, cartItemsData] = await Promise.all([
+    populateSingleProduct(params.id),
+    populateCartItemsData(),
+  ]);
+
+  // storing the current size that is added in cart for rendered product
+  const sizesAddedInCartForProduct = getCurrentSizeAddedInCartFromProduct(
+    params.id,
+    cartItemsData
+  );
 
   return (
     <div className={styles.singleProduct}>
@@ -117,7 +153,10 @@ export default async function Product({ params }: { params: { id: string } }) {
             </div>
             <div className={styles.productAllSizesAvailable}>
               {data.map((prd) => (
-                <ProductSizeBtns size={prd.size_name} />
+                <ProductSizeBtns
+                  size={prd.size_name}
+                  productId={params.id}
+                />
               ))}
             </div>
           </div>
@@ -190,7 +229,10 @@ export default async function Product({ params }: { params: { id: string } }) {
       <PaddingBottomRoutePages backgroundColor={'inherit'} />
       <div className={styles.ctaButtons}>
         <WishlistBtn />
-        <AddToCartBtn productId={params.id} />
+        <AddToCartBtn
+          productId={params.id}
+          sizesAddedInCart={sizesAddedInCartForProduct}
+        />
       </div>
     </div>
   );

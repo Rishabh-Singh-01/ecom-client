@@ -4,11 +4,11 @@ import { startTransition } from 'react';
 import { deleteItemFromCart } from '@/common/actions/cartActions';
 import styles from './deleteItemBtn.module.css';
 
-export function DeleteItemBtn({ id }: { id: string }) {
+export function DeleteItemBtn({ id, size }: { id: string; size: string }) {
   return (
     <button
       className={`material-symbols-outlined ${styles.savedProductCardDeleteIcon}`}
-      onClick={() => startTransition(() => deleteItemFromCart(id))}
+      onClick={() => startTransition(() => deleteItemFromCart(id,size))}
     >
       Delete
     </button>

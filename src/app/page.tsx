@@ -9,6 +9,7 @@ import {
   populateAllThemes,
   populateBestDeals,
 } from '@/common/populateData/landingPage';
+import { ImageContainer } from '@/components/imageContainer';
 
 export default async function Home() {
   const populateBestDealsPromise = populateBestDeals();
@@ -92,6 +93,20 @@ export default async function Home() {
           <ProductInfoCartList data={data} />
         </section>
 
+        <section className={styles.himHerSection}>
+          <h2 className='headingSecondary'>Madness for everyone</h2>
+          <div className={`${styles.himHerContainer} grid grid--2-cols`}>
+            <Link className={styles.himContainer} href='/products?gender=men'>
+              <ImageContainer />
+              <span className={styles.himHerContainerText}>+ HIM</span>
+            </Link>
+            <Link className={styles.herContainer} href='/products?gender=women'>
+              <ImageContainer />
+              <span className={styles.himHerContainerText}>+ HER</span>
+            </Link>
+          </div>
+        </section>
+
         <section>
           <h2 className='headingSecondary'>Services Just For You</h2>
           <div className={styles.servicesProvidedContainer}>
@@ -113,7 +128,6 @@ export default async function Home() {
           <div>Servi</div>
         </section>
 
-        <div>Him her section</div>
         <div>Extra Section</div>
       </main>
     </>

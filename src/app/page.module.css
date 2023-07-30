@@ -93,3 +93,31 @@
   font-weight: 500;
   z-index: 1;
 }
+
+.landingPage > .himHerSection {
+  padding: 0;
+}
+.himContainer,
+.herContainer {
+  background-color: var(--background-main-primary);
+}
+
+.herContainer {
+  background-color: var(--background-extra-primary);
+}
+
+.himContainer,
+.herContainer {
+  position: relative;
+  border-radius: 1rem;
+}
+
+.himHerContainerText {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(10%, 10%);
+  font-weight: 700;
+  font-size: var(--font-size-medium-2);
+  color: var(--background-major);
+}

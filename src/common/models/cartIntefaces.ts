@@ -5,7 +5,7 @@ export interface ProductFromCartInterface {
   name: string;
   price: number;
   images: string;
-  description: string;
+  size_name: string;
 }
 
 export interface AllProductsFromCartInterface {
